@@ -1,19 +1,14 @@
-/* =============================================
-   ENTRETENIMENTO — MAGAZINE POP BOLD
-   Branco com tipografia expressiva, rosa/coral,
-   layout editorial, energia de cultura pop
-   ============================================= */
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@400;700;800&display=swap');
 
 .pagina-entretenimento {
   --pink: #ff1f6e;
   --coral: #ff6b35;
   --yellow: #ffe234;
-  --bg: #fafafa;
-  --bg-card: #ffffff;
-  --border: #f0f0f0;
-  --text: #111111;
-  --text-dim: #777;
+  --bg: #0f0810;
+  --bg-card: rgba(255,255,255,0.04);
+  --border: rgba(255,31,110,0.15);
+  --text: #fff0f5;
+  --text-dim: #cc1972;
 
   font-family: 'Nunito', sans-serif;
   background: var(--bg);
@@ -21,32 +16,52 @@
   margin: 0 -1.5rem;
   padding: 0 1.5rem 3rem;
   min-height: 80vh;
-  animation: popIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation: popIn 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Brilho ambiente rosa */
+.pagina-entretenimento::before {
+  content: '';
+  position: fixed;
+  top: -150px; right: -100px;
+  width: 450px; height: 450px;
+  background: radial-gradient(ellipse, rgba(255,31,110,0.08) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+}
+.pagina-entretenimento::after {
+  content: '';
+  position: fixed;
+  bottom: -100px; left: -50px;
+  width: 300px; height: 300px;
+  background: radial-gradient(ellipse, rgba(255,107,53,0.06) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+}
+.pagina-entretenimento > * { position: relative; z-index: 1; }
 
 @keyframes popIn {
   from { opacity: 0; transform: scale(0.97); }
   to   { opacity: 1; transform: scale(1); }
 }
 
-/* ── HERO MAGAZINE ────────────────────────────── */
+/* ── HERO ─────────────────────────── */
 .ent-hero {
   padding: 2.5rem 0 0;
   margin-bottom: 2rem;
-  position: relative;
 }
 
-/* Faixa colorida tipo magazine */
 .ent-faixa {
+  display: inline-block;
   background: var(--pink);
   color: white;
-  display: inline-block;
   font-family: 'Anton', sans-serif;
   font-size: 0.72rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: 0.2rem 0.75rem;
   margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(255,31,110,0.3);
 }
 
 .pagina-entretenimento h2 {
@@ -60,11 +75,10 @@
   margin-bottom: 0.75rem;
 }
 
-/* Destaque com sublinhado grosso */
 .pagina-entretenimento h2 em {
   font-style: normal;
-  position: relative;
   color: var(--pink);
+  text-shadow: 0 0 30px rgba(255,31,110,0.4);
 }
 
 .ent-hero p {
@@ -72,47 +86,46 @@
   color: var(--text-dim);
   line-height: 1.6;
   font-weight: 700;
-  margin-bottom: 0;
 }
 
-/* Linha decorativa */
+/* Divisor colorido */
 .ent-divider {
   display: flex;
   align-items: center;
   gap: 0;
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
 }
-.ent-divider span:nth-child(1) {
-  flex: 1; height: 4px; background: var(--text);
-}
-.ent-divider span:nth-child(2) {
-  flex: 0.3; height: 4px; background: var(--pink);
-}
-.ent-divider span:nth-child(3) {
-  flex: 0.1; height: 4px; background: var(--yellow);
-}
+.ent-divider span:nth-child(1) { flex: 1;   height: 3px; background: var(--text); opacity: 0.15; }
+.ent-divider span:nth-child(2) { flex: 0.3; height: 3px; background: var(--pink); box-shadow: 0 0 8px rgba(255,31,110,0.5); }
+.ent-divider span:nth-child(3) { flex: 0.1; height: 3px; background: var(--yellow); }
 
-/* ── CARD PRINCIPAL ──────────────────────────── */
+/* ── CARD PRINCIPAL ────────────────── */
 .ent-card {
   background: var(--bg-card);
-  border: 2px solid var(--text);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--pink);
   padding: 1.75rem;
   margin-bottom: 2rem;
   position: relative;
-  /* Sombra "offset" estilo editorial/print */
-  box-shadow: 5px 5px 0 var(--text);
+  border-radius: 4px;
+  box-shadow: 0 4px 30px rgba(255,31,110,0.06);
+}
+.ent-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--pink), transparent 50%);
+  opacity: 0.5;
 }
 
 .ent-card p {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: #444;
+  color: #8a5070;
   margin-bottom: 0.75rem;
-  font-weight: 400;
 }
-
-.ent-card p:first-of-type { color: #222; font-weight: 700; }
-
+.ent-card p:first-of-type { color: #c890a8; }
 .ent-card p:first-of-type::first-letter {
   font-family: 'Anton', sans-serif;
   font-size: 3.5rem;
@@ -121,19 +134,20 @@
   margin-right: 0.08em;
   margin-top: 0.08em;
   color: var(--pink);
+  text-shadow: 0 0 20px rgba(255,31,110,0.4);
 }
 
 .ent-meta {
   display: flex;
   gap: 1.5rem;
   padding-top: 1rem;
-  border-top: 2px solid var(--text);
+  border-top: 1px solid var(--border);
   font-size: 0.78rem;
   color: var(--text-dim);
   font-weight: 700;
 }
 
-/* ── SLIDER ──────────────────────────────────── */
+/* ── SLIDER ────────────────────────── */
 .ent-slider-title {
   font-family: 'Anton', sans-serif;
   font-size: 1rem;
@@ -146,10 +160,9 @@
   gap: 0.75rem;
 }
 .ent-slider-title::after {
-  content: '';
-  flex: 1;
-  height: 3px;
-  background: var(--text);
+  content: ''; flex: 1; height: 3px;
+  background: linear-gradient(90deg, var(--pink), transparent);
+  opacity: 0.4;
 }
 
 .ent-slider {
@@ -159,24 +172,22 @@
   padding-bottom: 1.25rem;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
-  scrollbar-color: var(--pink) transparent;
+  scrollbar-color: rgba(255,31,110,0.3) transparent;
 }
-.ent-slider::-webkit-scrollbar { height: 4px; }
-.ent-slider::-webkit-scrollbar-thumb {
-  background: var(--pink); border-radius: 0;
-}
+.ent-slider::-webkit-scrollbar { height: 3px; }
+.ent-slider::-webkit-scrollbar-thumb { background: rgba(255,31,110,0.4); border-radius: 0; }
 
 .ent-card-slide {
   flex: 0 0 240px;
   scroll-snap-align: start;
   background: var(--bg-card);
-  border: 2px solid var(--text);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--pink);
   padding: 1.1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   position: relative;
-  box-shadow: 3px 3px 0 var(--text);
-  animation: popCardIn 0.35s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  animation: popCardIn 0.35s cubic-bezier(0.34,1.4,0.64,1) both;
 }
 .ent-card-slide:nth-child(1) { animation-delay: 0.08s; }
 .ent-card-slide:nth-child(2) { animation-delay: 0.16s; }
@@ -184,14 +195,15 @@
 .ent-card-slide:nth-child(4) { animation-delay: 0.32s; }
 
 @keyframes popCardIn {
-  from { opacity: 0; transform: scale(0.9) rotate(-1deg); }
-  to   { opacity: 1; transform: scale(1) rotate(0); }
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .ent-card-slide:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 var(--pink);
-  border-color: var(--pink);
+  transform: translateY(-4px);
+  border-color: rgba(255,31,110,0.4);
+  box-shadow: 0 8px 30px rgba(255,31,110,0.12);
+  background: rgba(255,31,110,0.04);
 }
 
 .ent-card-slide .tag {
@@ -199,17 +211,14 @@
   font-size: 0.68rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: white;
-  background: var(--pink);
+  color: var(--pink);
   display: inline-block;
-  padding: 0.1rem 0.5rem;
   margin-bottom: 0.6rem;
 }
 
 .ent-card-slide h4 {
   font-family: 'Anton', sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 0.95rem;
   color: var(--text);
   text-transform: uppercase;
   line-height: 1.2;
@@ -221,12 +230,11 @@
   font-size: 0.8rem;
   color: var(--text-dim);
   line-height: 1.5;
-  font-weight: 400;
 }
 
 .ent-card-slide .card-time {
   margin-top: 0.75rem;
   font-size: 0.68rem;
-  color: var(--text-dim);
+  color: rgba(255,31,110,0.35);
   font-weight: 800;
 }
