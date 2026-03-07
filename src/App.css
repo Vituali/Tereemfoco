@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600&family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@500&family=Outfit:wght@300;400;700;900&family=Space+Mono:wght@400;700&family=Anton&family=Nunito:wght@400;700;800&display=swap');
+
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+  background: var(--tema-bg, #070b14);
+  transition: background 0.5s ease;
+  min-height: 100vh;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.font-cyber    { --fonte-display: 'Orbitron', sans-serif;         --fonte-body: 'Share Tech Mono', monospace; }
+.font-stadium  { --fonte-display: 'Barlow Condensed', sans-serif; --fonte-body: 'Barlow', sans-serif; }
+.font-terminal { --fonte-display: 'IBM Plex Mono', monospace;     --fonte-body: 'IBM Plex Sans', sans-serif; }
+.font-tech     { --fonte-display: 'DM Sans', sans-serif;          --fonte-body: 'DM Sans', sans-serif; }
+.font-cosmos   { --fonte-display: 'Outfit', sans-serif;           --fonte-body: 'Outfit', sans-serif; }
+.font-pop      { --fonte-display: 'Anton', sans-serif;            --fonte-body: 'Nunito', sans-serif; }
+
+/* ── HEADER ─────────────────────────── */
+.app-header {
+  padding: 2rem 1.5rem 1.5rem;
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.app-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logo-nome {
+  font-family: var(--fonte-display, 'Anton', sans-serif);
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: logoEnter 0.5s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes logoEnter {
+  from { opacity: 0; transform: translateY(-10px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.logo-tagline {
+  font-family: var(--fonte-body, sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: color 0.4s ease;
+  animation: logoEnter 0.5s 0.08s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+/* ── CONTENT ────────────────────────── */
+.app-content {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+  padding: 0 1.5rem;
+}
+
+.app-main { width: 100%; }
+
+/* ── FOOTER ─────────────────────────── */
+.app-footer {
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  font-family: var(--fonte-body, sans-serif);
+  transition: all 0.5s ease;
+  letter-spacing: 0.3px;
+  margin-top: 2rem;
+}
+
+/* ── SIDEBAR ────────────────────────── */
+.sidebar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.sidebar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.55rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.lista-categorias {
+  list-style: none;
+  display: flex;
+  gap: 0.15rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.botao-categoria {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0.38rem 0.9rem;
+  cursor: pointer;
+  /* Fonte fixa — não muda com o tema, evita pulos de layout */
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: all 0.22s ease;
+  position: relative;
+  white-space: nowrap;
+  /* min-width fixo garante que o botão não mude de tamanho */
+  min-width: max-content;
+}
+
+.botao-categoria:hover {
+  color: var(--tema-accent) !important;
+  border-color: var(--tema-accent) !important;
+  background: transparent !important;
+  opacity: 1;
+}
+
+.botao-categoria:focus { outline: none; }
+
+.botao-categoria.ativo::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 15%; right: 15%;
+  height: 2px;
+  background: var(--tema-accent);
+  border-radius: 99px;
+  box-shadow: 0 0 10px var(--tema-accent);
+}

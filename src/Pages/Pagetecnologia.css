@@ -1,0 +1,268 @@
+/* =============================================
+   TECNOLOGIA — GLASSMORPHISM CLARO
+   Branco fosco, azul elétrico, clean & precision
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@500&display=swap');
+
+.pagina-tecnologia {
+  --blue: #0066ff;
+  --blue-light: #e8f0ff;
+  --blue-mid: #4d94ff;
+  --bg: #f7f9ff;
+  --bg-card: rgba(255,255,255,0.7);
+  --bg-glass: rgba(255,255,255,0.5);
+  --border: rgba(0, 102, 255, 0.12);
+  --text: #0a0f1e;
+  --text-dim: #6b7897;
+  --shadow: 0 4px 24px rgba(0, 102, 255, 0.08);
+
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem 3rem;
+  min-height: 80vh;
+  animation: techEnter 0.5s ease-out both;
+
+  background-image:
+    radial-gradient(ellipse at 70% 0%, rgba(0, 102, 255, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(77, 148, 255, 0.04) 0%, transparent 50%);
+}
+
+@keyframes techEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HERO ────────────────────────────────────── */
+.tech-hero {
+  padding: 2.5rem 0 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.tech-hero-left { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--blue);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.85rem;
+  border-radius: 4px;
+  background: var(--blue-light);
+  width: fit-content;
+}
+
+.pagina-tecnologia h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.pagina-tecnologia h2 span { color: var(--blue); }
+
+.tech-hero p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* Stat pill no canto */
+.tech-stat-pill {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+}
+.tech-stat-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--blue);
+  line-height: 1;
+}
+.tech-stat-label {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-top: 0.2rem;
+  letter-spacing: 0.5px;
+}
+
+/* ── CARD PRINCIPAL (glass) ──────────────────── */
+.tech-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.tech-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 2rem; right: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,102,255,0.3), transparent);
+}
+
+.tech-card p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  margin-bottom: 0.75rem;
+}
+
+.tech-card p:first-of-type { color: #2a3550; }
+
+.tech-card p:first-of-type::first-letter {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.1em;
+  margin-top: 0.12em;
+  color: var(--blue);
+}
+
+.tech-meta {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+/* ── TAGS DE TECH ────────────────────────────── */
+.tech-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.tech-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--blue);
+  background: var(--blue-light);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+}
+
+/* ── SLIDER ──────────────────────────────────── */
+.tech-slider-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--blue);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.tech-slider-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.tech-slider {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.tech-slider::-webkit-scrollbar { height: 3px; }
+.tech-slider::-webkit-scrollbar-thumb {
+  background: var(--border); border-radius: 99px;
+}
+
+.tech-card-slide {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: techCardIn 0.4s ease-out both;
+}
+.tech-card-slide:nth-child(1) { animation-delay: 0.1s; }
+.tech-card-slide:nth-child(2) { animation-delay: 0.2s; }
+.tech-card-slide:nth-child(3) { animation-delay: 0.3s; }
+.tech-card-slide:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes techCardIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.tech-card-slide:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0, 102, 255, 0.12);
+  border-color: rgba(0, 102, 255, 0.25);
+}
+
+.tech-card-slide .tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--blue);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.tech-card-slide h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+}
+
+.tech-card-slide p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.tech-card-slide .card-time {
+  margin-top: 0.75rem;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  opacity: 0.6;
+}

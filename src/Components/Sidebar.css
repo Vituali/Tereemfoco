@@ -1,0 +1,111 @@
+/* =============================================
+   SIDEBAR / NAVEGAÇÃO
+   Usamos flexbox para alinhar os botões em linha.
+   Flexbox é perfeito para layouts unidimensionais!
+   ============================================= */
+
+.sidebar {
+  background: rgba(255, 255, 255, 0.85);
+
+  /* backdrop-filter: blur() — efeito "vidro fosco"
+     O conteúdo atrás fica borrado. Muito moderno! */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 0.75rem 1rem;
+
+  /* position: sticky faz a navbar grudar no topo
+     ao rolar a página — melhor que position:fixed
+     porque ainda ocupa espaço no fluxo do doc */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  /* box-shadow com deslocamento só pra baixo
+     cria uma "sombra de profundidade" sutil */
+  box-shadow: 0 2px 12px rgba(44, 26, 14, 0.06);
+}
+
+.lista-categorias {
+  list-style: none;
+  display: flex;        /* itens em linha */
+  gap: 0.25rem;         /* espaço entre os itens */
+  flex-wrap: wrap;      /* quebra linha em telas pequenas */
+  justify-content: center;
+  padding: 0.25rem 0;
+}
+
+.item-categoria {
+  /* Sem estilo próprio — é só um container.
+     Isso é BEM comum: o <li> organiza, o <button> estiliza */
+}
+
+/* =============================================
+   BOTÃO DE CATEGORIA
+   ============================================= */
+.botao-categoria {
+  background: transparent;
+  border: 1.5px solid transparent;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--cor-texto-leve);
+  border-radius: 50px; /* pill shape — borda totalmente arredondada */
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+
+  /* transition: especifica QUAIS propriedades animam
+     e com qual velocidade/curva. Sempre prefira
+     transicionar 'transform' e 'opacity' — são as
+     mais performáticas (rodam na GPU!) */
+  transition: var(--transicao);
+
+  position: relative;
+  overflow: hidden; /* esconde o ::before que sai das bordas */
+}
+
+/* Efeito de "brilho" que passa pelo botão ao hover */
+.botao-categoria::before {
+  content: '';
+  position: absolute;
+  inset: 0; /* shorthand para top/right/bottom/left: 0 */
+  background: linear-gradient(
+    135deg,
+    rgba(245, 166, 35, 0.15),
+    rgba(232, 85, 10, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.botao-categoria:hover::before,
+.botao-categoria:focus::before {
+  opacity: 1;
+}
+
+.botao-categoria:hover,
+.botao-categoria:focus {
+  color: var(--cor-primaria);
+  border-color: var(--cor-secundaria);
+
+  /* transform: scale() aumenta o elemento SEM
+     afetar o layout ao redor. Muito mais suave
+     que mudar width/height! */
+  transform: translateY(-2px);
+  outline: none;
+  box-shadow: 0 4px 12px rgba(232, 85, 10, 0.15);
+}
+
+/* Estado "ativo" — quando a categoria está selecionada.
+   Você pode adicionar a classe .ativo via JS no App.jsx */
+.botao-categoria.ativo {
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(232, 85, 10, 0.35);
+}

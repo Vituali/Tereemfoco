@@ -1,0 +1,285 @@
+/* =============================================
+   FUTEBOL — ESTÁDIO À NOITE / PLACAR DE LED
+   Dark green, bright white, stadium lights
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600&display=swap');
+
+.pagina-futebol {
+  --verde: #00c853;
+  --verde-escuro: #003d1a;
+  --verde-gramado: #1a4a2e;
+  --amarelo: #ffd600;
+  --bg: #080f0a;
+  --bg-card: #0d1a0f;
+  --text: #f0fff4;
+  --text-dim: #6b9a78;
+
+  font-family: 'Barlow', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem 3rem;
+  min-height: 80vh;
+  position: relative;
+  overflow: hidden;
+  animation: stadiumIn 0.5s ease-out both;
+}
+
+@keyframes stadiumIn {
+  from { opacity: 0; transform: scale(0.99); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Holofote do estádio */
+.pagina-futebol::before {
+  content: '';
+  position: fixed;
+  top: -300px;
+  left: 30%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(0, 200, 83, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pagina-futebol > * { position: relative; z-index: 1; }
+
+/* ── HERO ────────────────────────────────────── */
+.futebol-hero {
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid rgba(0, 200, 83, 0.12);
+  margin-bottom: 2rem;
+}
+
+.futebol-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--verde);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 200, 83, 0.25);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  background: rgba(0, 200, 83, 0.05);
+}
+
+.futebol-hero h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.futebol-hero h2 em {
+  font-style: normal;
+  color: var(--verde);
+  text-shadow: 0 0 30px rgba(0, 200, 83, 0.5);
+}
+
+.futebol-hero p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ── PLACAR ──────────────────────────────────── */
+.futebol-placar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  background: var(--verde-escuro);
+  border: 1px solid rgba(0, 200, 83, 0.2);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.futebol-time {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.futebol-time:last-child { text-align: right; }
+
+.futebol-time-nome {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.futebol-time-liga {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.futebol-placar-centro {
+  text-align: center;
+}
+
+.futebol-placar-num {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--amarelo);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 214, 0, 0.4);
+  letter-spacing: 4px;
+}
+
+.futebol-placar-label {
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── CARD NOTÍCIA ────────────────────────────── */
+.futebol-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 200, 83, 0.1);
+  border-radius: 6px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--verde);
+  position: relative;
+}
+
+.futebol-card p {
+  color: #8ab89a;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+
+.futebol-card p:first-of-type { color: #b8d4c0; }
+
+.futebol-card p:first-of-type::first-letter {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.1em;
+  margin-top: 0.1em;
+  color: var(--verde);
+  text-shadow: 0 0 15px rgba(0, 200, 83, 0.5);
+}
+
+.futebol-meta {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 200, 83, 0.08);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ── SLIDER ──────────────────────────────────── */
+.futebol-slider-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--amarelo);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.futebol-slider-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 214, 0, 0.3), transparent);
+}
+
+.futebol-slider {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 200, 83, 0.2) transparent;
+}
+.futebol-slider::-webkit-scrollbar { height: 3px; }
+.futebol-slider::-webkit-scrollbar-thumb {
+  background: rgba(0, 200, 83, 0.3); border-radius: 99px;
+}
+
+.futebol-card-slide {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+  background: #0a1a0d;
+  border: 1px solid rgba(0, 200, 83, 0.1);
+  border-radius: 6px;
+  padding: 1.1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: slideGreen 0.4s ease-out both;
+  border-top: 2px solid var(--verde);
+}
+.futebol-card-slide:nth-child(1) { animation-delay: 0.1s; }
+.futebol-card-slide:nth-child(2) { animation-delay: 0.2s; }
+.futebol-card-slide:nth-child(3) { animation-delay: 0.3s; }
+.futebol-card-slide:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideGreen {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.futebol-card-slide:hover {
+  border-color: rgba(0, 200, 83, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 200, 83, 0.1);
+}
+
+.futebol-card-slide .tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--amarelo);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.futebol-card-slide h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.3px;
+}
+
+.futebol-card-slide p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.futebol-card-slide .card-time {
+  margin-top: 0.85rem;
+  font-size: 0.68rem;
+  color: rgba(0, 200, 83, 0.4);
+}

@@ -1,0 +1,232 @@
+/* =============================================
+   ENTRETENIMENTO — MAGAZINE POP BOLD
+   Branco com tipografia expressiva, rosa/coral,
+   layout editorial, energia de cultura pop
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@400;700;800&display=swap');
+
+.pagina-entretenimento {
+  --pink: #ff1f6e;
+  --coral: #ff6b35;
+  --yellow: #ffe234;
+  --bg: #fafafa;
+  --bg-card: #ffffff;
+  --border: #f0f0f0;
+  --text: #111111;
+  --text-dim: #777;
+
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem 3rem;
+  min-height: 80vh;
+  animation: popIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── HERO MAGAZINE ────────────────────────────── */
+.ent-hero {
+  padding: 2.5rem 0 0;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Faixa colorida tipo magazine */
+.ent-faixa {
+  background: var(--pink);
+  color: white;
+  display: inline-block;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.2rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.pagina-entretenimento h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 0.75rem;
+}
+
+/* Destaque com sublinhado grosso */
+.pagina-entretenimento h2 em {
+  font-style: normal;
+  position: relative;
+  color: var(--pink);
+}
+
+.ent-hero p {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+/* Linha decorativa */
+.ent-divider {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 1.5rem 0;
+}
+.ent-divider span:nth-child(1) {
+  flex: 1; height: 4px; background: var(--text);
+}
+.ent-divider span:nth-child(2) {
+  flex: 0.3; height: 4px; background: var(--pink);
+}
+.ent-divider span:nth-child(3) {
+  flex: 0.1; height: 4px; background: var(--yellow);
+}
+
+/* ── CARD PRINCIPAL ──────────────────────────── */
+.ent-card {
+  background: var(--bg-card);
+  border: 2px solid var(--text);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  position: relative;
+  /* Sombra "offset" estilo editorial/print */
+  box-shadow: 5px 5px 0 var(--text);
+}
+
+.ent-card p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+}
+
+.ent-card p:first-of-type { color: #222; font-weight: 700; }
+
+.ent-card p:first-of-type::first-letter {
+  font-family: 'Anton', sans-serif;
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.08em;
+  margin-top: 0.08em;
+  color: var(--pink);
+}
+
+.ent-meta {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--text);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+
+/* ── SLIDER ──────────────────────────────────── */
+.ent-slider-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ent-slider-title::after {
+  content: '';
+  flex: 1;
+  height: 3px;
+  background: var(--text);
+}
+
+.ent-slider {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1.25rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pink) transparent;
+}
+.ent-slider::-webkit-scrollbar { height: 4px; }
+.ent-slider::-webkit-scrollbar-thumb {
+  background: var(--pink); border-radius: 0;
+}
+
+.ent-card-slide {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+  background: var(--bg-card);
+  border: 2px solid var(--text);
+  padding: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  box-shadow: 3px 3px 0 var(--text);
+  animation: popCardIn 0.35s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+.ent-card-slide:nth-child(1) { animation-delay: 0.08s; }
+.ent-card-slide:nth-child(2) { animation-delay: 0.16s; }
+.ent-card-slide:nth-child(3) { animation-delay: 0.24s; }
+.ent-card-slide:nth-child(4) { animation-delay: 0.32s; }
+
+@keyframes popCardIn {
+  from { opacity: 0; transform: scale(0.9) rotate(-1deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.ent-card-slide:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--pink);
+  border-color: var(--pink);
+}
+
+.ent-card-slide .tag {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: white;
+  background: var(--pink);
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.ent-card-slide h4 {
+  font-family: 'Anton', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.3px;
+}
+
+.ent-card-slide p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.ent-card-slide .card-time {
+  margin-top: 0.75rem;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  font-weight: 800;
+}

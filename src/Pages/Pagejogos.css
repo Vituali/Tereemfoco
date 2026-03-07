@@ -1,0 +1,306 @@
+/* =============================================
+   JOGOS — CYBERPUNK NEON ON DARK
+   Inspirado em DeFi / cyberpunk interfaces
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap');
+
+.pagina-jogos {
+  --neon-cyan: #00fff2;
+  --neon-pink: #ff00aa;
+  --neon-purple: #bf00ff;
+  --bg-dark: #070b14;
+  --bg-card: #0d1526;
+  --bg-card2: #0a1020;
+  --grid-color: rgba(0, 255, 242, 0.04);
+  --text-bright: #e8f4ff;
+  --text-dim: #5a7a99;
+
+  font-family: 'Share Tech Mono', monospace;
+  background: var(--bg-dark);
+  color: var(--text-bright);
+  padding: 0;
+  min-height: 80vh;
+  position: relative;
+  overflow: hidden;
+  animation: cyberEnter 0.6s ease-out both;
+
+  /* Reset do tema global dentro desta página */
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem 3rem;
+}
+
+@keyframes cyberEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Grade cyberpunk de fundo */
+.pagina-jogos::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Brilho ambiente */
+.pagina-jogos::after {
+  content: '';
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(0, 255, 242, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pagina-jogos > * { position: relative; z-index: 1; }
+
+/* ── HERO CYBERPUNK ─────────────────────────── */
+.jogos-hero {
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid rgba(0, 255, 242, 0.15);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.jogos-scan-line {
+  position: absolute;
+  top: 0; left: -1.5rem; right: -1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  animation: scanMove 3s linear infinite;
+}
+@keyframes scanMove {
+  0%   { top: 0; opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.jogos-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 255, 242, 0.3);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  background: rgba(0, 255, 242, 0.05);
+}
+
+.jogos-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--neon-cyan);
+  animation: blink 1.2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.jogos-hero h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text-bright);
+  text-shadow:
+    0 0 20px rgba(0, 255, 242, 0.4),
+    0 0 60px rgba(0, 255, 242, 0.15);
+  margin-bottom: 0.75rem;
+}
+
+.jogos-hero h2 span {
+  color: var(--neon-cyan);
+}
+
+.jogos-hero p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+/* ── CARD PRINCIPAL ─────────────────────────── */
+.jogos-card-principal {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 255, 242, 0.12);
+  border-radius: 4px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.jogos-card-principal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
+  box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.jogos-card-principal::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--neon-cyan), transparent 60%);
+}
+
+.jogos-card-principal p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.jogos-card-principal p:first-of-type {
+  color: #8ab0cc;
+  font-size: 0.95rem;
+}
+
+.jogos-card-principal p:first-of-type::first-letter {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.1em;
+  margin-top: 0.1em;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.jogos-meta {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 255, 242, 0.08);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ── SLIDER TITLE ────────────────────────────── */
+.jogos-section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--neon-pink);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.jogos-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 0, 170, 0.4), transparent);
+}
+
+/* ── SLIDER TRACK ────────────────────────────── */
+.jogos-slider {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 242, 0.2) transparent;
+}
+.jogos-slider::-webkit-scrollbar { height: 3px; }
+.jogos-slider::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 242, 0.3);
+  border-radius: 99px;
+}
+
+/* ── CARD DO SLIDER ──────────────────────────── */
+.jogos-card-slide {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+  background: var(--bg-card2);
+  border: 1px solid rgba(0, 255, 242, 0.1);
+  border-radius: 4px;
+  padding: 1.1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: cardCyberIn 0.4s ease-out both;
+}
+.jogos-card-slide:nth-child(1) { animation-delay: 0.1s; }
+.jogos-card-slide:nth-child(2) { animation-delay: 0.2s; }
+.jogos-card-slide:nth-child(3) { animation-delay: 0.3s; }
+.jogos-card-slide:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardCyberIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.jogos-card-slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.jogos-card-slide:hover {
+  border-color: rgba(0, 255, 242, 0.35);
+  box-shadow: 0 0 25px rgba(0, 255, 242, 0.08), inset 0 0 30px rgba(0, 255, 242, 0.02);
+  transform: translateY(-3px);
+}
+.jogos-card-slide:hover::before { opacity: 1; }
+
+.jogos-card-slide .tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--neon-pink);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.jogos-card-slide h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+.jogos-card-slide p {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.jogos-card-slide .card-time {
+  margin-top: 0.85rem;
+  font-size: 0.68rem;
+  color: rgba(0, 255, 242, 0.4);
+}

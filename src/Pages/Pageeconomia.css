@@ -1,0 +1,269 @@
+/* =============================================
+   ECONOMIA — BLOOMBERG TERMINAL
+   Preto profundo, laranja âmbar, dados financeiros
+   tipografia monoespaçada, densidade de informação
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap');
+
+.pagina-economia {
+  --amber: #ff9500;
+  --amber-dim: #a85f00;
+  --green-pos: #00d084;
+  --red-neg: #ff3b4e;
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card2: #161616;
+  --border: #1e1e1e;
+  --text: #e8e8e8;
+  --text-dim: #666;
+
+  font-family: 'IBM Plex Mono', monospace;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem 3rem;
+  min-height: 80vh;
+  animation: terminalBoot 0.4s ease-out both;
+}
+
+@keyframes terminalBoot {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── HEADER / TICKER BAR ─────────────────────── */
+.eco-ticker {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.72rem;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+.eco-ticker::-webkit-scrollbar { display: none; }
+
+.eco-ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.eco-ticker-name {
+  color: var(--text-dim);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+}
+
+.eco-ticker-value { color: var(--text); font-weight: 600; }
+
+.eco-ticker-change.pos { color: var(--green-pos); }
+.eco-ticker-change.neg { color: var(--red-neg); }
+
+.eco-ticker-sep {
+  color: #2a2a2a;
+  flex-shrink: 0;
+}
+
+/* ── BADGE ───────────────────────────────────── */
+.eco-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--amber);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 149, 0, 0.25);
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 0.85rem;
+  background: rgba(255, 149, 0, 0.05);
+}
+
+/* ── TÍTULO ──────────────────────────────────── */
+.pagina-economia h2 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.3px;
+}
+
+.pagina-economia h2 span { color: var(--amber); }
+
+.eco-subtitulo {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── GRID DE DADOS ───────────────────────────── */
+.eco-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.eco-data-cell {
+  background: var(--bg-card);
+  padding: 0.85rem 1rem;
+}
+
+.eco-data-label {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.eco-data-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.eco-data-value.pos { color: var(--green-pos); }
+.eco-data-value.neg { color: var(--red-neg); }
+
+.eco-data-change {
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+.eco-data-change.pos { color: var(--green-pos); }
+.eco-data-change.neg { color: var(--red-neg); }
+
+/* ── CARD PRINCIPAL ──────────────────────────── */
+.eco-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-top: 2px solid var(--amber);
+  position: relative;
+}
+
+.eco-card p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: #aaa;
+  margin-bottom: 0.75rem;
+}
+
+.eco-card p:first-of-type { color: #ccc; }
+
+.eco-card p:first-of-type::first-letter {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 2.8rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.1em;
+  margin-top: 0.1em;
+  color: var(--amber);
+}
+
+.eco-meta {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* ── SLIDER ──────────────────────────────────── */
+.eco-slider-title {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--amber);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eco-slider-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.eco-slider {
+  display: flex;
+  gap: 1px;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  background: var(--border);
+}
+.eco-slider::-webkit-scrollbar { display: none; }
+
+.eco-card-slide {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+  background: var(--bg-card2);
+  padding: 1.1rem;
+  transition: background 0.2s;
+  cursor: pointer;
+  animation: ecoSlideIn 0.35s ease-out both;
+}
+.eco-card-slide:nth-child(1) { animation-delay: 0.1s; }
+.eco-card-slide:nth-child(2) { animation-delay: 0.18s; }
+.eco-card-slide:nth-child(3) { animation-delay: 0.26s; }
+.eco-card-slide:nth-child(4) { animation-delay: 0.34s; }
+
+@keyframes ecoSlideIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.eco-card-slide:hover { background: #1a1a1a; }
+
+.eco-card-slide .tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--amber);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.eco-card-slide h4 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+}
+
+.eco-card-slide p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.eco-card-slide .card-time {
+  margin-top: 0.75rem;
+  font-size: 0.65rem;
+  color: #333;
+}

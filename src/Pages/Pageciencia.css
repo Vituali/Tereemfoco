@@ -1,0 +1,254 @@
+/* =============================================
+   CIÊNCIA — COSMOS / DEEP SPACE
+   Escuro profundo, partículas de estrelas,
+   tipografia científica, aurora boreal sutil
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:wght@400;700&display=swap');
+
+.pagina-ciencia {
+  --teal: #00e5c8;
+  --aurora: #7b61ff;
+  --aurora2: #00bfff;
+  --bg: #020810;
+  --bg-card: rgba(255,255,255,0.03);
+  --border: rgba(0, 229, 200, 0.1);
+  --text: #d8eef8;
+  --text-dim: #4a7a90;
+
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem 3rem;
+  min-height: 80vh;
+  position: relative;
+  overflow: hidden;
+  animation: cosmosEnter 0.7s ease-out both;
+}
+
+@keyframes cosmosEnter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Nebulosa de fundo */
+.pagina-ciencia::before {
+  content: '';
+  position: fixed;
+  top: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(ellipse, rgba(123, 97, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+.pagina-ciencia::after {
+  content: '';
+  position: fixed;
+  bottom: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(ellipse, rgba(0, 229, 200, 0.06) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+.pagina-ciencia > * { position: relative; z-index: 1; }
+
+/* Estrelas geradas via pseudo-elemento no hero */
+.ciencia-hero {
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.ciencia-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 0.28rem 0.85rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  background: rgba(0, 229, 200, 0.04);
+}
+
+.pagina-ciencia h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.3px;
+}
+
+.pagina-ciencia h2 span {
+  background: linear-gradient(90deg, var(--teal), var(--aurora2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ciencia-hero p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── CARD PRINCIPAL ──────────────────────────── */
+.ciencia-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  position: relative;
+  backdrop-filter: blur(8px);
+}
+
+.ciencia-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(0, 229, 200, 0.03), transparent 50%);
+  pointer-events: none;
+}
+
+.ciencia-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--teal), var(--aurora), transparent);
+  opacity: 0.5;
+}
+
+.ciencia-card p {
+  font-size: 0.93rem;
+  line-height: 1.85;
+  color: #6a9ab0;
+  margin-bottom: 0.75rem;
+  font-weight: 300;
+}
+.ciencia-card p:first-of-type { color: #a0c8d8; }
+
+.ciencia-card p:first-of-type::first-letter {
+  font-family: 'Space Mono', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.12em;
+  margin-top: 0.1em;
+  color: var(--teal);
+  text-shadow: 0 0 20px rgba(0, 229, 200, 0.4);
+}
+
+.ciencia-meta {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+/* ── SLIDER ──────────────────────────────────── */
+.ciencia-slider-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ciencia-slider-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 229, 200, 0.3), transparent);
+}
+
+.ciencia-slider {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 229, 200, 0.15) transparent;
+}
+.ciencia-slider::-webkit-scrollbar { height: 3px; }
+.ciencia-slider::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 200, 0.2); border-radius: 99px;
+}
+
+.ciencia-card-slide {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: cosmosCardIn 0.4s ease-out both;
+  border-top: 1px solid rgba(0, 229, 200, 0.3);
+}
+.ciencia-card-slide:nth-child(1) { animation-delay: 0.1s; }
+.ciencia-card-slide:nth-child(2) { animation-delay: 0.2s; }
+.ciencia-card-slide:nth-child(3) { animation-delay: 0.3s; }
+.ciencia-card-slide:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cosmosCardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ciencia-card-slide:hover {
+  background: rgba(0, 229, 200, 0.04);
+  border-color: rgba(0, 229, 200, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 229, 200, 0.06);
+}
+
+.ciencia-card-slide .tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--aurora2);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.ciencia-card-slide h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+}
+
+.ciencia-card-slide p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.ciencia-card-slide .card-time {
+  margin-top: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(0, 229, 200, 0.3);
+}

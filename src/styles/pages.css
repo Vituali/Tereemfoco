@@ -1,0 +1,314 @@
+/* =============================================
+   SISTEMA DE CORES POR CATEGORIA
+   Cada página herda do tema global (App.css)
+   e sobrescreve apenas o que é único dela.
+   ============================================= */
+
+/* ── FUTEBOL ── verde gramado + dourado ──────── */
+.pagina-futebol {
+  --cor-tema: #16a34a;
+  --cor-tema-claro: #22c55e;
+  --cor-tema-bg: rgba(22, 163, 74, 0.07);
+  --cor-tema-borda: rgba(22, 163, 74, 0.2);
+  --slide-dir: -1;
+}
+
+/* ── JOGOS ── roxo néon + ciano ────────────── */
+.pagina-jogos {
+  --cor-tema: #7c3aed;
+  --cor-tema-claro: #a855f7;
+  --cor-tema-bg: rgba(124, 58, 237, 0.07);
+  --cor-tema-borda: rgba(124, 58, 237, 0.2);
+  --slide-dir: 1;
+}
+
+/* ── ECONOMIA ── âmbar + laranja ───────────── */
+.pagina-economia {
+  --cor-tema: #d97706;
+  --cor-tema-claro: #f59e0b;
+  --cor-tema-bg: rgba(217, 119, 6, 0.07);
+  --cor-tema-borda: rgba(217, 119, 6, 0.2);
+  --slide-dir: -1;
+}
+
+/* ── TECNOLOGIA ── azul elétrico + índigo ───── */
+.pagina-tecnologia {
+  --cor-tema: #2563eb;
+  --cor-tema-claro: #60a5fa;
+  --cor-tema-bg: rgba(37, 99, 235, 0.07);
+  --cor-tema-borda: rgba(37, 99, 235, 0.2);
+  --slide-dir: 1;
+}
+
+/* ── CIÊNCIA ── teal + esmeralda ────────────── */
+.pagina-ciencia {
+  --cor-tema: #0d9488;
+  --cor-tema-claro: #2dd4bf;
+  --cor-tema-bg: rgba(13, 148, 136, 0.07);
+  --cor-tema-borda: rgba(13, 148, 136, 0.2);
+  --slide-dir: -1;
+}
+
+/* ── ENTRETENIMENTO ── rosa + vermelho ─────── */
+.pagina-entretenimento {
+  --cor-tema: #e11d48;
+  --cor-tema-claro: #fb7185;
+  --cor-tema-bg: rgba(225, 29, 72, 0.07);
+  --cor-tema-borda: rgba(225, 29, 72, 0.2);
+  --slide-dir: 1;
+}
+
+/* =============================================
+   SEÇÃO PRINCIPAL — COMPARTILHADA
+   ============================================= */
+[class^="pagina-"] {
+  padding: 2rem 0 3rem;
+  animation: pageEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =============================================
+   HERO BANNER
+   ============================================= */
+.hero-banner {
+  background: var(--cor-tema-bg);
+  border: 1px solid var(--cor-tema-borda);
+  border-radius: 20px;
+  padding: 2rem 2rem 1.75rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Detalhe decorativo de fundo */
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, var(--cor-tema-claro) 0%, transparent 70%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* =============================================
+   BADGE / ETIQUETA DE CATEGORIA
+   ============================================= */
+.badge-categoria {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--cor-tema-bg);
+  color: var(--cor-tema);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 0.85rem;
+  border: 1px solid var(--cor-tema-borda);
+}
+
+/* =============================================
+   TÍTULO PRINCIPAL
+   ============================================= */
+[class^="pagina-"] h2 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, var(--cor-tema), var(--cor-tema-claro));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================
+   CARD PRINCIPAL (destaque)
+   ============================================= */
+.card-noticia {
+  background: var(--cor-fundo-card);
+  border-radius: var(--raio);
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+  border: 1px solid var(--cor-borda);
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicao);
+  border-left: 4px solid var(--cor-tema);
+  position: relative;
+}
+
+.card-noticia:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+  border-left-width: 6px;
+}
+
+/* =============================================
+   TEXTO DO ARTIGO
+   ============================================= */
+[class^="pagina-"] .card-noticia p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--cor-texto-leve);
+}
+
+[class^="pagina-"] .card-noticia p:first-of-type::first-letter {
+  font-family: var(--fonte-titulo);
+  font-size: 3.2rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.1em;
+  margin-top: 0.12em;
+  color: var(--cor-tema);
+}
+
+/* =============================================
+   META DO ARTIGO
+   ============================================= */
+.meta-artigo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.8rem;
+  color: var(--cor-texto-leve);
+  flex-wrap: wrap;
+}
+
+.meta-artigo span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* =============================================
+   SLIDER HORIZONTAL DE CARDS
+   overflow-x: auto com scroll suave — os cards
+   ficam em linha e deslizam horizontalmente!
+   ============================================= */
+.slider-wrapper {
+  margin-top: 2rem;
+}
+
+.slider-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  color: var(--cor-texto);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.slider-titulo::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cor-borda);
+}
+
+.slider-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  scroll-snap-type: x mandatory; /* snap suave nos cards */
+  -webkit-overflow-scrolling: touch;
+
+  /* Esconde a scrollbar visualmente mas mantém funcional */
+  scrollbar-width: thin;
+  scrollbar-color: var(--cor-tema-borda) transparent;
+}
+
+.slider-track::-webkit-scrollbar {
+  height: 4px;
+}
+.slider-track::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slider-track::-webkit-scrollbar-thumb {
+  background: var(--cor-tema-borda);
+  border-radius: 99px;
+}
+
+/* =============================================
+   CARD DO SLIDER
+   flex: 0 0 ... impede o card de encolher/crescer
+   — mantém largura fixa no scroll horizontal
+   ============================================= */
+.card-slide {
+  flex: 0 0 260px; /* não encolhe, não cresce, 260px fixos */
+  scroll-snap-align: start;
+  background: var(--cor-fundo-card);
+  border-radius: 14px;
+  padding: 1.25rem;
+  border: 1px solid var(--cor-borda);
+  transition: var(--transicao);
+  cursor: pointer;
+  animation: cardFadeIn 0.4s ease-out both;
+  border-top: 3px solid var(--cor-tema);
+}
+
+.card-slide:nth-child(1) { animation-delay: 0.1s; }
+.card-slide:nth-child(2) { animation-delay: 0.2s; }
+.card-slide:nth-child(3) { animation-delay: 0.3s; }
+.card-slide:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-slide:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  border-color: var(--cor-tema-claro);
+}
+
+.card-slide .tag-card {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cor-tema);
+  margin-bottom: 0.5rem;
+}
+
+.card-slide h4 {
+  font-family: var(--fonte-titulo);
+  font-size: 0.95rem;
+  color: var(--cor-texto);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+.card-slide p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--cor-texto-leve);
+}
+
+.card-slide .card-footer {
+  margin-top: 0.85rem;
+  font-size: 0.72rem;
+  color: var(--cor-texto-leve);
+  opacity: 0.7;
+}
