@@ -1,111 +1,98 @@
 /* =============================================
-   SIDEBAR / NAVEGAÇÃO
-   Usamos flexbox para alinhar os botões em linha.
-   Flexbox é perfeito para layouts unidimensionais!
+   SIDEBAR.CSS
+   Estilos complementares do componente Sidebar.
+   Os valores dinâmicos de cor (background, border,
+   cor dos botões) vêm via inline style do Sidebar.jsx,
+   passados pelo sistema de temas do App.jsx.
+   
+   Este arquivo cuida da estrutura, tipografia fixa
+   e comportamentos de hover/foco.
    ============================================= */
 
+/* ── CONTAINER ───────────────────────────────── */
 .sidebar {
-  background: rgba(255, 255, 255, 0.85);
-
-  /* backdrop-filter: blur() — efeito "vidro fosco"
-     O conteúdo atrás fica borrado. Muito moderno! */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-bottom: 1px solid var(--cor-borda);
-  padding: 0.75rem 1rem;
-
-  /* position: sticky faz a navbar grudar no topo
-     ao rolar a página — melhor que position:fixed
-     porque ainda ocupa espaço no fluxo do doc */
   position: sticky;
   top: 0;
   z-index: 100;
-
-  /* box-shadow com deslocamento só pra baixo
-     cria uma "sombra de profundidade" sutil */
-  box-shadow: 0 2px 12px rgba(44, 26, 14, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
+/* ── INNER WRAPPER ───────────────────────────── */
+.sidebar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.55rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── LISTA ───────────────────────────────────── */
 .lista-categorias {
   list-style: none;
-  display: flex;        /* itens em linha */
-  gap: 0.25rem;         /* espaço entre os itens */
-  flex-wrap: wrap;      /* quebra linha em telas pequenas */
+  display: flex;
+  gap: 0.15rem;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 0.25rem 0;
+  align-items: center;
 }
 
-.item-categoria {
-  /* Sem estilo próprio — é só um container.
-     Isso é BEM comum: o <li> organiza, o <button> estiliza */
-}
-
-/* =============================================
-   BOTÃO DE CATEGORIA
-   ============================================= */
+/* ── BOTÃO ───────────────────────────────────── */
 .botao-categoria {
   background: transparent;
-  border: 1.5px solid transparent;
-  padding: 0.45rem 1.1rem;
+  border: 1px solid transparent;
+  padding: 0.38rem 0.9rem;
   cursor: pointer;
-  font-family: var(--fonte-corpo);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--cor-texto-leve);
-  border-radius: 50px; /* pill shape — borda totalmente arredondada */
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  font-size: 0.78rem;
 
-  /* transition: especifica QUAIS propriedades animam
-     e com qual velocidade/curva. Sempre prefira
-     transicionar 'transform' e 'opacity' — são as
-     mais performáticas (rodam na GPU!) */
-  transition: var(--transicao);
+  /* Fonte FIXA — não herda --fonte-display do tema.
+     Evita que os botões mudem de tamanho ao
+     trocar entre Orbitron, Anton, Barlow, etc. */
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+
+  border-radius: 3px;
+  white-space: nowrap;
+  min-width: max-content;
+
+  transition: color 0.22s ease,
+              background 0.22s ease,
+              border-color 0.22s ease,
+              transform 0.22s ease;
 
   position: relative;
-  overflow: hidden; /* esconde o ::before que sai das bordas */
 }
 
-/* Efeito de "brilho" que passa pelo botão ao hover */
-.botao-categoria::before {
+.botao-categoria:hover {
+  color: var(--tema-accent) !important;
+  border-color: var(--tema-accent) !important;
+  background: transparent !important;
+  transform: translateY(-1px);
+}
+
+.botao-categoria:focus { outline: none; }
+.botao-categoria:active { transform: translateY(0); }
+
+/* ── ESTADO ATIVO ────────────────────────────── */
+/* background e color vêm via inline style do Sidebar.jsx */
+.botao-categoria.ativo::after {
   content: '';
   position: absolute;
-  inset: 0; /* shorthand para top/right/bottom/left: 0 */
-  background: linear-gradient(
-    135deg,
-    rgba(245, 166, 35, 0.15),
-    rgba(232, 85, 10, 0.1)
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: inherit;
+  bottom: -3px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: var(--tema-accent);
+  border-radius: 99px;
+  box-shadow: 0 0 10px var(--tema-accent),
+              0 0 20px var(--tema-accent);
 }
 
-.botao-categoria:hover::before,
-.botao-categoria:focus::before {
-  opacity: 1;
-}
-
-.botao-categoria:hover,
-.botao-categoria:focus {
-  color: var(--cor-primaria);
-  border-color: var(--cor-secundaria);
-
-  /* transform: scale() aumenta o elemento SEM
-     afetar o layout ao redor. Muito mais suave
-     que mudar width/height! */
-  transform: translateY(-2px);
-  outline: none;
-  box-shadow: 0 4px 12px rgba(232, 85, 10, 0.15);
-}
-
-/* Estado "ativo" — quando a categoria está selecionada.
-   Você pode adicionar a classe .ativo via JS no App.jsx */
-.botao-categoria.ativo {
-  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-  color: white;
-  border-color: transparent;
-  box-shadow: 0 4px 15px rgba(232, 85, 10, 0.35);
+/* ── RESPONSIVO ──────────────────────────────── */
+@media (max-width: 480px) {
+  .sidebar-inner { padding: 0.5rem 1rem; }
+  .botao-categoria { font-size: 0.7rem; padding: 0.35rem 0.7rem; }
 }
