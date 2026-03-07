@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📰 Tere em Foco
+# 📰 Teste de Blog
 
 **Portal de notícias multi-tema com visual único por categoria**
 
