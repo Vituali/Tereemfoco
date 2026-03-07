@@ -107,8 +107,8 @@ Os cards se reorganizam automaticamente em qualquer tamanho de tela.
 
 ```bash
 # Clone o repositório
-git clone https://github.com/SEU_USUARIO/tere-em-foco.git
-cd tere-em-foco
+git clone https://github.com/MiriamSsantos/tereemfoco.git
+cd tereemfoco
 
 # Instala dependências
 npm install
@@ -137,12 +137,12 @@ Para configurar pela primeira vez:
 
 1. Edite o `homepage` no `package.json`:
    ```json
-   "homepage": "https://SEU_USUARIO.github.io/tere-em-foco"
+   "homepage": "https://MiriamSsantos.github.io/tereemfoco"
    ```
 
 2. Adicione a `base` no `vite.config.js`:
    ```js
-   export default defineConfig({ base: '/tere-em-foco/' })
+   export default defineConfig({ base: '/tereemfoco/' })
    ```
 
 3. Ative o GitHub Pages em **Settings → Pages → Branch: gh-pages**
@@ -174,6 +174,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 <div align="center">
 
-Feito com ☕ e muito CSS · **Tere em Foco 2025**
+Feito com ☕ e muito CSS · **Tere em Foco 2026**
 
 </div>
