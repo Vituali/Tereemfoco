@@ -107,7 +107,7 @@ Os cards se reorganizam automaticamente em qualquer tamanho de tela.
 
 ```bash
 # Clone o repositório
-git clone https://github.com/MiriamSsantos/tereemfoco.git
+git clone https://github.com/Vituali/tereemfoco.git
 cd tereemfoco
 
 # Instala dependências
@@ -137,7 +137,7 @@ Para configurar pela primeira vez:
 
 1. Edite o `homepage` no `package.json`:
    ```json
-   "homepage": "https://MiriamSsantos.github.io/tereemfoco"
+   "homepage": "https://Vituali.github.io/tereemfoco"
    ```
 
 2. Adicione a `base` no `vite.config.js`:
